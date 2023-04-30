@@ -173,6 +173,7 @@ class FileMetadata(object):
           if '(' in id:
             title = id[id.index('(')+1:id.index(')')]
             id = id[:id.index('(')]
+            id += '?'
           video_codec = line.split()[3]
           stream = StreamMetadata(id, video_codec, title=title)
           self.video_streams.append(stream)
@@ -183,6 +184,7 @@ class FileMetadata(object):
           if '(' in id:
             title = id[id.index('(')+1:id.index(')')]
             id = id[:id.index('(')]
+            id += '?'
           audio_codec = line.split()[3].strip(',')
           stream = AudioMetadata(id, audio_codec, title=title)
           if ', stereo, ' in line: stream.channels = 1
